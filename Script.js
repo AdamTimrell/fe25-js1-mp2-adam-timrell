@@ -9,6 +9,7 @@ const btnNewGame = document.getElementById("btnNewGame")
 const nameInput = document.getElementById("nameInput")
 const btnSaveName = document.getElementById("saveName")
 const header = document.getElementById("header")
+const form = document.getElementById("form")
 
 let points = 0;
 let totalRounds = 0;
@@ -72,7 +73,8 @@ function freezeRound(){
     
 }
 
-function saveName(){
+function saveName(event){
+    event.preventDefault()
     playerName = nameInput.value
     header.innerText = `Player Name: ${playerName}`
     nameInput.setAttribute("hidden", "hidden")
@@ -89,6 +91,6 @@ function hideButtons(){
 btnFreeze.addEventListener("click", freezeRound);
 btnDice.addEventListener("click", rollTheDice);
 btnNewGame.addEventListener("click", newGame)
-btnSaveName.addEventListener("click", saveName)
+form.addEventListener("submit", saveName)
 addEventListener("DOMContentLoaded", (event) => hideButtons())
 
